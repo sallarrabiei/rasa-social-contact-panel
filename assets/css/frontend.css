@@ -1,32 +1,18 @@
-/* ==========================================================================
-   Smart Social Contact Panel — Frontend Styles
-   BEM methodology + CSS Custom Properties for runtime theming.
-   Values are overridden by the inline <style id="sscp-vars"> output from PHP.
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   CSS Custom Properties (defaults; overridden by inline PHP-generated style)
-   -------------------------------------------------------------------------- */
-
 :root {
-	--sscp-btn-bg:       #25d366;
-	--sscp-btn-color:    #ffffff;
-	--sscp-popup-bg:     #ffffff;
-	--sscp-popup-color:  #333333;
-	--sscp-popup-width:  420px;
-	--sscp-popup-radius: 12px;
-	--sscp-card-bg:      #f8f9fa;
-	--sscp-card-hover:   #e9ecef;
-	--sscp-card-icon:    currentColor;
-	--sscp-card-radius:  8px;
-	--sscp-mobile-cols:  1;
+	--wltsscp-btn-bg:       #25d366;
+	--wltsscp-btn-color:    #ffffff;
+	--wltsscp-popup-bg:     #ffffff;
+	--wltsscp-popup-color:  #333333;
+	--wltsscp-popup-width:  420px;
+	--wltsscp-popup-radius: 12px;
+	--wltsscp-card-bg:      #f8f9fa;
+	--wltsscp-card-hover:   #e9ecef;
+	--wltsscp-card-icon:    currentColor;
+	--wltsscp-card-radius:  8px;
+	--wltsscp-mobile-cols:  1;
 }
 
-/* --------------------------------------------------------------------------
-   Backdrop overlay
-   -------------------------------------------------------------------------- */
-
-.sscp-overlay {
+.wltsscp-overlay {
 	position: fixed;
 	inset: 0;
 	background: rgba(0, 0, 0, 0.45);
@@ -36,16 +22,12 @@
 	transition: opacity 0.25s ease;
 }
 
-.sscp-overlay.sscp-visible {
+.wltsscp-overlay.wltsscp-visible {
 	opacity: 1;
 	pointer-events: auto;
 }
 
-/* --------------------------------------------------------------------------
-   Floating trigger button
-   -------------------------------------------------------------------------- */
-
-.sscp-trigger-wrap {
+.wltsscp-trigger-wrap {
 	position: fixed;
 	bottom: 24px;
 	z-index: 99999;
@@ -54,17 +36,17 @@
 	gap: 8px;
 }
 
-.sscp-trigger-wrap--bottom-left  {
+.wltsscp-trigger-wrap--bottom-left  {
 	left: 24px;
 	flex-direction: row;
 }
 
-.sscp-trigger-wrap--bottom-right {
+.wltsscp-trigger-wrap--bottom-right {
 	right: 24px;
 	flex-direction: row;
 }
 
-.sscp-trigger-wrap__side-text {
+.wltsscp-trigger-wrap__side-text {
 	max-width: min(220px, calc(100vw - 150px));
 	padding: 8px 12px;
 	background: #ffffff;
@@ -78,17 +60,17 @@
 	overflow-wrap: anywhere;
 }
 
-.sscp-trigger-wrap--bottom-right .sscp-trigger-wrap__side-text {
+.wltsscp-trigger-wrap--bottom-right .wltsscp-trigger-wrap__side-text {
 	order: -1;
 }
 
-.sscp-trigger {
+.wltsscp-trigger {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
 	padding: 12px 20px;
-	background: var(--sscp-btn-bg);
-	color: var(--sscp-btn-color);
+	background: var(--wltsscp-btn-bg);
+	color: var(--wltsscp-btn-color);
 	border: none;
 	border-radius: 50px;
 	font-size: 15px;
@@ -101,50 +83,46 @@
 	line-height: 1;
 }
 
-.sscp-trigger:hover {
+.wltsscp-trigger:hover {
 	transform: translateY(-2px);
 	box-shadow: 0 6px 22px rgba(0, 0, 0, 0.26);
 }
 
-.sscp-trigger:active {
+.wltsscp-trigger:active {
 	transform: translateY(0);
 }
 
-.sscp-trigger:focus-visible {
-	outline: 3px solid var(--sscp-btn-bg);
+.wltsscp-trigger:focus-visible {
+	outline: 3px solid var(--wltsscp-btn-bg);
 	outline-offset: 3px;
 }
 
-.sscp-trigger__icon {
+.wltsscp-trigger__icon {
 	display: flex;
 	align-items: center;
 	flex-shrink: 0;
 }
 
-.sscp-trigger__icon svg {
+.wltsscp-trigger__icon svg {
 	width: 22px;
 	height: 22px;
 }
 
-.sscp-trigger__text {
+.wltsscp-trigger__text {
 	white-space: nowrap;
 }
 
-/* --------------------------------------------------------------------------
-   Popup panel
-   -------------------------------------------------------------------------- */
-
-.sscp-panel {
+.wltsscp-panel {
 	position: fixed;
 	bottom: 90px;
 	z-index: 99999;
-	width: var(--sscp-popup-width);
+	width: var(--wltsscp-popup-width);
 	max-width: calc(100vw - 32px);
 	max-height: 80vh;
 	overflow-y: auto;
-	background: var(--sscp-popup-bg);
-	color: var(--sscp-popup-color);
-	border-radius: var(--sscp-popup-radius);
+	background: var(--wltsscp-popup-bg);
+	color: var(--wltsscp-popup-color);
+	border-radius: var(--wltsscp-popup-radius);
 	padding: 0;
 	visibility: hidden;
 	opacity: 0;
@@ -153,67 +131,56 @@
 	scrollbar-color: #ccc transparent;
 }
 
-.sscp-panel--shadow {
+.wltsscp-panel--shadow {
 	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
 }
 
-/* Position mirrors the trigger button */
-.sscp-trigger-wrap--bottom-left  ~ .sscp-overlay ~ .sscp-panel { left: 24px; }
-.sscp-trigger-wrap--bottom-right ~ .sscp-overlay ~ .sscp-panel { right: 24px; }
-.sscp-trigger--bottom-left  ~ .sscp-overlay ~ .sscp-panel { left: 24px; }
-.sscp-trigger--bottom-right ~ .sscp-overlay ~ .sscp-panel { right: 24px; }
+.wltsscp-trigger-wrap--bottom-left  ~ .wltsscp-overlay ~ .wltsscp-panel { left: 24px; }
+.wltsscp-trigger-wrap--bottom-right ~ .wltsscp-overlay ~ .wltsscp-panel { right: 24px; }
+.wltsscp-trigger--bottom-left  ~ .wltsscp-overlay ~ .wltsscp-panel { left: 24px; }
+.wltsscp-trigger--bottom-right ~ .wltsscp-overlay ~ .wltsscp-panel { right: 24px; }
 
-/* Fallback — panel position based on body class added by JS */
-body.sscp-pos-left  .sscp-panel { left: 24px; }
-body.sscp-pos-right .sscp-panel { right: 24px; }
+body.wltsscp-pos-left  .wltsscp-panel { left: 24px; }
+body.wltsscp-pos-right .wltsscp-panel { right: 24px; }
 
-.sscp-panel.sscp-open {
+.wltsscp-panel.wltsscp-open {
 	visibility: visible;
 	opacity: 1;
 	pointer-events: auto;
 }
 
-/* --------------------------------------------------------------------------
-   Animations (applied as a modifier class matching admin setting)
-   -------------------------------------------------------------------------- */
-
-@keyframes sscp-fade {
+@keyframes wltsscp-fade {
 	from { opacity: 0; }
 	to   { opacity: 1; }
 }
 
-@keyframes sscp-slide-up {
+@keyframes wltsscp-slide-up {
 	from { opacity: 0; transform: translateY(16px); }
 	to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes sscp-zoom {
+@keyframes wltsscp-zoom {
 	from { opacity: 0; transform: scale(0.92); }
 	to   { opacity: 1; transform: scale(1); }
 }
 
-.sscp-panel--anim-fade.sscp-open     { animation: sscp-fade     0.22s ease forwards; }
-.sscp-panel--anim-slide-up.sscp-open { animation: sscp-slide-up 0.28s ease forwards; }
-.sscp-panel--anim-zoom.sscp-open     { animation: sscp-zoom     0.22s ease forwards; }
+.wltsscp-panel--anim-fade.wltsscp-open     { animation: wltsscp-fade     0.22s ease forwards; }
+.wltsscp-panel--anim-slide-up.wltsscp-open { animation: wltsscp-slide-up 0.28s ease forwards; }
+.wltsscp-panel--anim-zoom.wltsscp-open     { animation: wltsscp-zoom     0.22s ease forwards; }
 
-/* Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
-	.sscp-panel--anim-fade.sscp-open,
-	.sscp-panel--anim-slide-up.sscp-open,
-	.sscp-panel--anim-zoom.sscp-open {
+	.wltsscp-panel--anim-fade.wltsscp-open,
+	.wltsscp-panel--anim-slide-up.wltsscp-open,
+	.wltsscp-panel--anim-zoom.wltsscp-open {
 		animation: none;
 	}
-	.sscp-trigger,
-	.sscp-overlay {
+	.wltsscp-trigger,
+	.wltsscp-overlay {
 		transition: none;
 	}
 }
 
-/* --------------------------------------------------------------------------
-   Popup header
-   -------------------------------------------------------------------------- */
-
-.sscp-panel__header {
+.wltsscp-panel__header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -221,19 +188,19 @@ body.sscp-pos-right .sscp-panel { right: 24px; }
 	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 	position: sticky;
 	top: 0;
-	background: var(--sscp-popup-bg);
+	background: var(--wltsscp-popup-bg);
 	z-index: 1;
 }
 
-.sscp-panel__title {
+.wltsscp-panel__title {
 	margin: 0;
 	font-size: 17px;
 	font-weight: 700;
-	color: var(--sscp-popup-color);
+	color: var(--wltsscp-popup-color);
 	line-height: 1.3;
 }
 
-.sscp-panel__close {
+.wltsscp-panel__close {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -243,27 +210,27 @@ body.sscp-pos-right .sscp-panel { right: 24px; }
 	border: none;
 	border-radius: 6px;
 	background: rgba(0, 0, 0, 0.06);
-	color: var(--sscp-popup-color);
+	color: var(--wltsscp-popup-color);
 	cursor: pointer;
 	flex-shrink: 0;
 	transition: background 0.15s;
 }
 
-.sscp-panel__close:hover {
+.wltsscp-panel__close:hover {
 	background: rgba(0, 0, 0, 0.12);
 }
 
-.sscp-panel__close:focus-visible {
-	outline: 2px solid var(--sscp-btn-bg);
+.wltsscp-panel__close:focus-visible {
+	outline: 2px solid var(--wltsscp-btn-bg);
 	outline-offset: 2px;
 }
 
-.sscp-panel__close svg {
+.wltsscp-panel__close svg {
 	width: 18px;
 	height: 18px;
 }
 
-.sscp-panel__description {
+.wltsscp-panel__description {
 	margin: 0;
 	padding: 6px 20px 12px;
 	font-size: 13px;
@@ -271,66 +238,56 @@ body.sscp-pos-right .sscp-panel { right: 24px; }
 	line-height: 1.5;
 }
 
-.sscp-panel__description p {
+.wltsscp-panel__description p {
 	margin: 0 0 8px;
 }
 
-.sscp-panel__description p:last-child {
+.wltsscp-panel__description p:last-child {
 	margin-bottom: 0;
 }
 
-.sscp-panel__description a {
+.wltsscp-panel__description a {
 	color: inherit;
 	text-decoration: underline;
 }
 
-/* --------------------------------------------------------------------------
-   Platform grid
-   -------------------------------------------------------------------------- */
-
-.sscp-grid {
+.wltsscp-grid {
 	display: grid;
 	gap: 10px;
 	padding: 16px 20px;
 }
 
-.sscp-grid--col-1 { grid-template-columns: 1fr; }
-.sscp-grid--col-2 { grid-template-columns: repeat(2, 1fr); }
-.sscp-grid--col-3 { grid-template-columns: repeat(3, 1fr); }
+.wltsscp-grid--col-1 { grid-template-columns: 1fr; }
+.wltsscp-grid--col-2 { grid-template-columns: repeat(2, 1fr); }
+.wltsscp-grid--col-3 { grid-template-columns: repeat(3, 1fr); }
 
-/* --------------------------------------------------------------------------
-   Platform card
-   -------------------------------------------------------------------------- */
-
-.sscp-card {
+.wltsscp-card {
 	display: flex;
 	align-items: center;
 	gap: 12px;
 	padding: 12px 14px;
-	background: var(--sscp-card-bg);
-	border-radius: var(--sscp-card-radius);
+	background: var(--wltsscp-card-bg);
+	border-radius: var(--wltsscp-card-radius);
 	text-decoration: none;
-	color: var(--sscp-popup-color);
+	color: var(--wltsscp-popup-color);
 	transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 	border: 1px solid rgba(0, 0, 0, 0.05);
-	min-width: 0; /* prevent grid blowout */
-}
+	min-width: 0; }
 
-.sscp-card:hover {
-	background: var(--sscp-card-hover);
+.wltsscp-card:hover {
+	background: var(--wltsscp-card-hover);
 	transform: translateY(-1px);
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
 	text-decoration: none;
-	color: var(--sscp-popup-color);
+	color: var(--wltsscp-popup-color);
 }
 
-.sscp-card:focus-visible {
-	outline: 2px solid var(--sscp-btn-bg);
+.wltsscp-card:focus-visible {
+	outline: 2px solid var(--wltsscp-btn-bg);
 	outline-offset: 2px;
 }
 
-/* 3-column cards use vertical (icon-on-top) layout */
-.sscp-grid--col-3 .sscp-card {
+.wltsscp-grid--col-3 .wltsscp-card {
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
@@ -338,33 +295,33 @@ body.sscp-pos-right .sscp-panel { right: 24px; }
 	gap: 8px;
 }
 
-.sscp-card__icon {
+.wltsscp-card__icon {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
 	width: 36px;
 	height: 36px;
-	color: var(--sscp-card-icon);
+	color: var(--wltsscp-card-icon);
 }
 
-.sscp-grid--col-3 .sscp-card__icon {
+.wltsscp-grid--col-3 .wltsscp-card__icon {
 	width: 40px;
 	height: 40px;
 }
 
-.sscp-card__icon svg {
+.wltsscp-card__icon svg {
 	width: 100%;
 	height: 100%;
 }
 
-.sscp-card__content {
+.wltsscp-card__content {
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
 }
 
-.sscp-card__label {
+.wltsscp-card__label {
 	font-size: 13px;
 	font-weight: 600;
 	line-height: 1.3;
@@ -373,12 +330,12 @@ body.sscp-pos-right .sscp-panel { right: 24px; }
 	text-overflow: ellipsis;
 }
 
-.sscp-grid--col-3 .sscp-card__label {
+.wltsscp-grid--col-3 .wltsscp-card__label {
 	white-space: normal;
 	font-size: 12px;
 }
 
-.sscp-card__description {
+.wltsscp-card__description {
 	display: block;
 	font-size: 11px;
 	color: rgba(0, 0, 0, 0.45);
@@ -388,11 +345,7 @@ body.sscp-pos-right .sscp-panel { right: 24px; }
 	text-overflow: ellipsis;
 }
 
-/* --------------------------------------------------------------------------
-   Empty state
-   -------------------------------------------------------------------------- */
-
-.sscp-panel__empty {
+.wltsscp-panel__empty {
 	margin: 0;
 	padding: 24px 20px;
 	text-align: center;
@@ -400,11 +353,7 @@ body.sscp-pos-right .sscp-panel { right: 24px; }
 	color: rgba(0, 0, 0, 0.45);
 }
 
-/* --------------------------------------------------------------------------
-   Branding footer
-   -------------------------------------------------------------------------- */
-
-.sscp-panel__branding {
+.wltsscp-panel__branding {
 	margin: 0;
 	padding: 8px 20px 12px;
 	text-align: center;
@@ -413,83 +362,72 @@ body.sscp-pos-right .sscp-panel { right: 24px; }
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* --------------------------------------------------------------------------
-   Scroll lock (body class added by JS when panel is open)
-   -------------------------------------------------------------------------- */
-
-body.sscp-body-lock {
+body.wltsscp-body-lock {
 	overflow: hidden;
 	touch-action: none;
 }
 
-/* --------------------------------------------------------------------------
-   Responsive — small screens
-   -------------------------------------------------------------------------- */
-
 @media (max-width: 480px) {
-	.sscp-trigger-wrap {
+	.wltsscp-trigger-wrap {
 		bottom: 16px;
 		max-width: calc(100vw - 32px);
 	}
 
-	.sscp-trigger-wrap--bottom-left {
+	.wltsscp-trigger-wrap--bottom-left {
 		left: 16px;
 	}
 
-	.sscp-trigger-wrap--bottom-right {
+	.wltsscp-trigger-wrap--bottom-right {
 		right: 16px;
 	}
 
-	.sscp-trigger-wrap__side-text {
+	.wltsscp-trigger-wrap__side-text {
 		max-width: 150px;
 		font-size: 13px;
 	}
 
-	/* Full-width popup override (when enabled in admin) */
-	.sscp-panel.sscp-mobile-fullwidth {
+	.wltsscp-panel.wltsscp-mobile-fullwidth {
 		left: 0 !important;
 		right: 0 !important;
 		bottom: 0;
 		width: 100% !important;
 		max-width: 100%;
-		border-radius: var(--sscp-popup-radius) var(--sscp-popup-radius) 0 0;
+		border-radius: var(--wltsscp-popup-radius) var(--wltsscp-popup-radius) 0 0;
 		max-height: 90vh;
 	}
 
-	/* Respect mobile column setting from CSS variable */
-	.sscp-grid--col-2,
-	.sscp-grid--col-3 {
-		grid-template-columns: repeat(var(--sscp-mobile-cols, 1), 1fr);
+	.wltsscp-grid--col-2,
+	.wltsscp-grid--col-3 {
+		grid-template-columns: repeat(var(--wltsscp-mobile-cols, 1), 1fr);
 	}
 
-	/* Re-flow 3-col cards to side-by-side on mobile */
-	.sscp-grid--col-3 .sscp-card {
+	.wltsscp-grid--col-3 .wltsscp-card {
 		flex-direction: row;
 		text-align: left;
 		padding: 12px 14px;
 	}
 
-	.sscp-grid--col-3 .sscp-card__icon {
+	.wltsscp-grid--col-3 .wltsscp-card__icon {
 		width: 36px;
 		height: 36px;
 	}
 
-	.sscp-grid--col-3 .sscp-card__label {
+	.wltsscp-grid--col-3 .wltsscp-card__label {
 		white-space: nowrap;
 		font-size: 13px;
 	}
 
-	.sscp-trigger {
+	.wltsscp-trigger {
 		padding: 10px 16px;
 		font-size: 14px;
 	}
 }
 
 @media (max-width: 360px) {
-	.sscp-trigger__text {
+	.wltsscp-trigger__text {
 		display: none;
 	}
-	.sscp-trigger {
+	.wltsscp-trigger {
 		padding: 12px;
 		border-radius: 50%;
 	}

@@ -1,17 +1,9 @@
-/* ==========================================================================
-   Smart Social Contact Panel — Admin Styles
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   Layout
-   -------------------------------------------------------------------------- */
-
-.sscp-wrap {
+.wltsscp-wrap {
 	max-width: 900px;
 	padding-bottom: 40px;
 }
 
-.sscp-page-title {
+.wltsscp-page-title {
 	display: flex;
 	align-items: center;
 	gap: 10px;
@@ -20,12 +12,12 @@
 	margin-bottom: 16px;
 }
 
-.sscp-logo {
+.wltsscp-logo {
 	font-size: 24px;
 	line-height: 1;
 }
 
-.sscp-version {
+.wltsscp-version {
 	font-size: 13px;
 	font-weight: 400;
 	color: #888;
@@ -34,18 +26,14 @@
 	border-radius: 20px;
 }
 
-/* --------------------------------------------------------------------------
-   Tabs
-   -------------------------------------------------------------------------- */
-
-.sscp-tabs {
+.wltsscp-tabs {
 	display: flex;
 	gap: 0;
 	border-bottom: 1px solid #c3c4c7;
 	margin-bottom: 24px;
 }
 
-.sscp-tab {
+.wltsscp-tab {
 	display: inline-block;
 	padding: 10px 18px;
 	font-size: 14px;
@@ -59,23 +47,19 @@
 	margin-bottom: -1px;
 }
 
-.sscp-tab:hover {
+.wltsscp-tab:hover {
 	color: #1d2327;
 	background: #f0f0f1;
 }
 
-.sscp-tab--active {
+.wltsscp-tab--active {
 	color: #1d2327;
 	background: #fff;
 	border-color: #c3c4c7;
 	border-bottom-color: #fff;
 }
 
-/* --------------------------------------------------------------------------
-   Sections
-   -------------------------------------------------------------------------- */
-
-.sscp-section {
+.wltsscp-section {
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 6px;
@@ -84,7 +68,7 @@
 	box-shadow: 0 1px 3px rgba(0,0,0,.04);
 }
 
-.sscp-section-title {
+.wltsscp-section-title {
 	font-size: 15px;
 	font-weight: 600;
 	color: #1d2327;
@@ -93,47 +77,39 @@
 	border-bottom: 1px solid #f0f0f1;
 }
 
-/* --------------------------------------------------------------------------
-   Tables
-   -------------------------------------------------------------------------- */
-
-.sscp-table {
+.wltsscp-table {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-.sscp-table th,
-.sscp-table td {
+.wltsscp-table th,
+.wltsscp-table td {
 	padding: 10px 12px;
 	vertical-align: middle;
 	text-align: left;
 }
 
-.sscp-table th {
+.wltsscp-table th {
 	width: 220px;
 	font-size: 13px;
 	font-weight: 600;
 	color: #3c434a;
 }
 
-.sscp-table tr + tr th,
-.sscp-table tr + tr td {
+.wltsscp-table tr + tr th,
+.wltsscp-table tr + tr td {
 	border-top: 1px solid #f0f0f1;
 }
 
-.sscp-table--inner {
+.wltsscp-table--inner {
 	margin-top: 0;
 }
 
-.sscp-table--inner th {
+.wltsscp-table--inner th {
 	width: 180px;
 }
 
-/* --------------------------------------------------------------------------
-   Toggle switches
-   -------------------------------------------------------------------------- */
-
-.sscp-toggle {
+.wltsscp-toggle {
 	position: relative;
 	display: inline-block;
 	width: 44px;
@@ -142,14 +118,14 @@
 	cursor: pointer;
 }
 
-.sscp-toggle input {
+.wltsscp-toggle input {
 	opacity: 0;
 	width: 0;
 	height: 0;
 	position: absolute;
 }
 
-.sscp-toggle__slider {
+.wltsscp-toggle__slider {
 	position: absolute;
 	inset: 0;
 	background: #c3c4c7;
@@ -157,7 +133,7 @@
 	transition: background 0.2s;
 }
 
-.sscp-toggle__slider::before {
+.wltsscp-toggle__slider::before {
 	content: '';
 	position: absolute;
 	width: 18px;
@@ -170,38 +146,34 @@
 	box-shadow: 0 1px 3px rgba(0,0,0,.25);
 }
 
-.sscp-toggle input:checked + .sscp-toggle__slider {
+.wltsscp-toggle input:checked + .wltsscp-toggle__slider {
 	background: #2271b1;
 }
 
-.sscp-toggle input:checked + .sscp-toggle__slider::before {
+.wltsscp-toggle input:checked + .wltsscp-toggle__slider::before {
 	transform: translateX(20px);
 }
 
-.sscp-toggle input:focus-visible + .sscp-toggle__slider {
+.wltsscp-toggle input:focus-visible + .wltsscp-toggle__slider {
 	outline: 2px solid #2271b1;
 	outline-offset: 2px;
 }
 
-.sscp-toggle--sm {
+.wltsscp-toggle--sm {
 	width: 36px;
 	height: 20px;
 }
 
-.sscp-toggle--sm .sscp-toggle__slider::before {
+.wltsscp-toggle--sm .wltsscp-toggle__slider::before {
 	width: 14px;
 	height: 14px;
 }
 
-.sscp-toggle--sm input:checked + .sscp-toggle__slider::before {
+.wltsscp-toggle--sm input:checked + .wltsscp-toggle__slider::before {
 	transform: translateX(16px);
 }
 
-/* --------------------------------------------------------------------------
-   Color picker display
-   -------------------------------------------------------------------------- */
-
-.sscp-color-value {
+.wltsscp-color-value {
 	display: inline-block;
 	margin-left: 8px;
 	font-family: monospace;
@@ -220,24 +192,20 @@ input[type="color"] {
 	vertical-align: middle;
 }
 
-/* --------------------------------------------------------------------------
-   Platform accordion rows
-   -------------------------------------------------------------------------- */
-
-.sscp-platforms-list {
+.wltsscp-platforms-list {
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
 }
 
-.sscp-platform-row {
+.wltsscp-platform-row {
 	border: 1px solid #c3c4c7;
 	border-radius: 6px;
 	overflow: hidden;
 	background: #fff;
 }
 
-.sscp-platform-row__header {
+.wltsscp-platform-row__header {
 	display: flex;
 	align-items: center;
 	gap: 12px;
@@ -248,31 +216,31 @@ input[type="color"] {
 	transition: background 0.15s;
 }
 
-.sscp-platform-row__header:hover {
+.wltsscp-platform-row__header:hover {
 	background: #f0f0f1;
 }
 
-.sscp-platform-row__header:focus-visible {
+.wltsscp-platform-row__header:focus-visible {
 	outline: 2px solid #2271b1;
 	outline-offset: -2px;
 }
 
-.sscp-platform-row--open .sscp-platform-row__header {
+.wltsscp-platform-row--open .wltsscp-platform-row__header {
 	background: #f0f6fc;
 	border-bottom: 1px solid #c3c4c7;
 }
 
-.sscp-platform-row__toggle-enabled {
+.wltsscp-platform-row__toggle-enabled {
 	flex-shrink: 0;
 }
 
-.sscp-platform-row__name {
+.wltsscp-platform-row__name {
 	font-weight: 600;
 	font-size: 13px;
 	min-width: 120px;
 }
 
-.sscp-platform-row__value-preview {
+.wltsscp-platform-row__value-preview {
 	flex: 1;
 	font-size: 12px;
 	color: #888;
@@ -281,13 +249,13 @@ input[type="color"] {
 	white-space: nowrap;
 }
 
-.sscp-platform-row__sort {
+.wltsscp-platform-row__sort {
 	display: flex;
 	flex-direction: column;
 	gap: 2px;
 }
 
-.sscp-sort-btn {
+.wltsscp-sort-btn {
 	background: none;
 	border: 1px solid #c3c4c7;
 	border-radius: 3px;
@@ -299,69 +267,61 @@ input[type="color"] {
 	transition: background 0.1s;
 }
 
-.sscp-sort-btn:hover {
+.wltsscp-sort-btn:hover {
 	background: #e0e0e0;
 }
 
-.sscp-platform-row__chevron {
+.wltsscp-platform-row__chevron {
 	font-size: 10px;
 	color: #888;
 	transition: transform 0.2s;
 }
 
-.sscp-platform-row--open .sscp-platform-row__chevron {
+.wltsscp-platform-row--open .wltsscp-platform-row__chevron {
 	transform: rotate(180deg);
 }
 
-.sscp-platform-row__body {
+.wltsscp-platform-row__body {
 	padding: 16px;
 }
 
-/* --------------------------------------------------------------------------
-   Submit row
-   -------------------------------------------------------------------------- */
-
-.sscp-submit-row {
+.wltsscp-submit-row {
 	margin-top: 8px;
 	padding-top: 16px;
 }
 
-/* --------------------------------------------------------------------------
-   Advanced tab
-   -------------------------------------------------------------------------- */
-
-.sscp-advanced-actions {
+.wltsscp-advanced-actions {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
 }
 
-.sscp-advanced-card {
+.wltsscp-advanced-card {
 	border: 1px solid #c3c4c7;
 	border-radius: 6px;
 	padding: 16px 20px;
 }
 
-.sscp-advanced-card h3 {
+.wltsscp-advanced-card h3 {
 	margin: 0 0 8px;
 	font-size: 14px;
 }
 
-.sscp-advanced-card p {
+.wltsscp-advanced-card p {
 	margin: 0 0 12px;
 	color: #50575e;
 	font-size: 13px;
 }
 
-.sscp-hidden {
+.wltsscp-hidden {
 	display: none !important;
 }
 
 @media (max-width: 640px) {
-	.sscp-advanced-actions {
+	.wltsscp-advanced-actions {
 		grid-template-columns: 1fr;
 	}
-	.sscp-table th {
+	.wltsscp-table th {
 		width: 140px;
 	}
 }

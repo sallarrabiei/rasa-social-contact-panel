@@ -2,53 +2,45 @@
 /**
  * Plugin Name:       Smart Social Contact Panel
  * Description:       A floating social contact button with a configurable popup panel supporting 20 platforms. Lightweight, fast, and fully customizable from the WordPress admin.
- * Version:           1.0.0
+ * Version:           1.0.2
  * Requires at least: 5.6
  * Requires PHP:      7.4
  * Author:            WPLabTech
+ * Author URI:        https://www.wplabtech.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       smart-social-contact-panel
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-// Plugin constants
-define( 'SSCP_VERSION', '1.0.0' );
-define( 'SSCP_FILE',    __FILE__ );
-define( 'SSCP_DIR',     plugin_dir_path( __FILE__ ) );
-define( 'SSCP_URL',     plugin_dir_url( __FILE__ ) );
+define( 'WLTSSCP_VERSION', '1.0.2' );
+define( 'WLTSSCP_FILE', __FILE__ );
+define( 'WLTSSCP_DIR', plugin_dir_path( __FILE__ ) );
+define( 'WLTSSCP_URL', plugin_dir_url( __FILE__ ) );
 
-// Load dependencies
-require_once SSCP_DIR . 'includes/helpers.php';
-require_once SSCP_DIR . 'includes/admin-settings.php';
-require_once SSCP_DIR . 'includes/frontend-render.php';
+require_once WLTSSCP_DIR . 'includes/helpers.php';
+require_once WLTSSCP_DIR . 'includes/admin-settings.php';
+require_once WLTSSCP_DIR . 'includes/frontend-render.php';
 
-// Lifecycle hooks (must be at file scope, before class instantiation)
-register_activation_hook( __FILE__, [ 'SSCP_Plugin', 'activate' ] );
-register_deactivation_hook( __FILE__, [ 'SSCP_Plugin', 'deactivate' ] );
+register_activation_hook( __FILE__, [ 'WLTSSCP_Plugin', 'activate' ] );
+register_deactivation_hook( __FILE__, [ 'WLTSSCP_Plugin', 'deactivate' ] );
 
-// Bootstrap after all plugins are loaded so other plugins can hook in first
-add_action( 'plugins_loaded', [ 'SSCP_Plugin', 'get_instance' ] );
+add_action( 'plugins_loaded', [ 'WLTSSCP_Plugin', 'get_instance' ] );
 
-/**
- * Main plugin class — singleton bootstrap.
- *
- * Responsible for: wiring subsystems together, storing the option key,
- * providing the canonical get_options() accessor, and plugin lifecycle.
- */
-final class SSCP_Plugin {
+final class WLTSSCP_Plugin {
 
-	/** @var SSCP_Plugin|null */
 	private static $instance = null;
 
-	/** WordPress option key for all plugin settings. */
-	const OPTION_KEY = 'sscp_settings';
+	const OPTION_KEY = 'wltsscp_settings';
 
 	public static function get_instance() {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
+
 		return self::$instance;
 	}
 
@@ -57,58 +49,45 @@ final class SSCP_Plugin {
 	}
 
 	private function init() {
-		// "Settings" quick-link on the Plugins list page
 		add_filter(
-			'plugin_action_links_' . plugin_basename( SSCP_FILE ),
+			'plugin_action_links_' . plugin_basename( WLTSSCP_FILE ),
 			[ $this, 'add_action_links' ]
 		);
 
-		// Retrieve settings once; subsystems share the same array
 		$options = self::get_options();
 
-		// Admin subsystem
-		$settings = new SSCP_Settings( self::OPTION_KEY, SSCP_VERSION );
+		$settings = new WLTSSCP_Settings( self::OPTION_KEY, WLTSSCP_VERSION );
 		$settings->register_hooks();
 
-		// Frontend subsystem
-		$frontend = new SSCP_Frontend( $options );
+		$frontend = new WLTSSCP_Frontend( $options );
 		$frontend->register_hooks();
 	}
 
-	/**
-	 * Return the current settings merged with defaults.
-	 * One get_option() call per request; WordPress object-cache handles repetition.
-	 */
 	public static function get_options() {
 		$saved = get_option( self::OPTION_KEY, [] );
+
 		if ( ! is_array( $saved ) ) {
 			$saved = [];
 		}
-		return wp_parse_args( $saved, SSCP_Settings::get_default_options() );
+
+		return wp_parse_args( $saved, WLTSSCP_Settings::get_default_options() );
 	}
 
 	public function add_action_links( $links ) {
 		$settings_link = sprintf(
 			'<a href="%s">%s</a>',
-			esc_url( admin_url( 'admin.php?page=smart-social-contact' ) ),
+			esc_url( admin_url( 'admin.php?page=smart-social-contact-panel' ) ),
 			esc_html__( 'Settings', 'smart-social-contact-panel' )
 		);
+
 		array_unshift( $links, $settings_link );
+
 		return $links;
 	}
 
-	/**
-	 * On first activation: write default options.
-	 * add_option() is a no-op if the option already exists,
-	 * so existing settings survive re-activation.
-	 */
 	public static function activate() {
-		add_option( self::OPTION_KEY, SSCP_Settings::get_default_options(), '', false );
+		add_option( self::OPTION_KEY, WLTSSCP_Settings::get_default_options(), '', false );
 	}
 
-	/**
-	 * Deactivation intentionally does nothing — data is preserved so that
-	 * reactivating the plugin restores all previously saved settings.
-	 */
 	public static function deactivate() {}
 }

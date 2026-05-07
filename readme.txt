@@ -4,7 +4,7 @@ Tags: social, contact, whatsapp, floating button, popup
 Requires at least: 5.6
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,13 @@ No. The plugin does not collect analytics, send tracking data, or contact extern
 
 == Changelog ==
 
+= 1.0.2 =
+* Updated plugin package naming and metadata.
+
+= 1.0.1 =
+* Updated plugin naming and package metadata for repository compliance.
+* Switched frontend dynamic CSS to WordPress enqueue APIs.
+
 = 1.0.0 =
 * Initial release.
 * Added 20 social and contact platforms.
@@ -77,6 +84,9 @@ No. The plugin does not collect analytics, send tracking data, or contact extern
 * Added export/import settings tools.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Repository compliance update.
 
 = 1.0.0 =
 Initial release.
